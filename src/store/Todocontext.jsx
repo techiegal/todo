@@ -10,7 +10,7 @@ export const TodoContext = createContext({
 const TodoReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TODO":
-      return [...state, action.payload.todo];
+      return [action.payload.todo, ...state];
     case "UPDATE_TODO":
       return state.map((e, index) => {
         if (index === action.payload.index) {

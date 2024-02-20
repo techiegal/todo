@@ -1,6 +1,7 @@
 import { useContext, useRef, useState } from "react";
 import { TodoContext } from "../store/Todocontext";
 import Modal from "./Modal";
+import List from "./List";
 
 function Display() {
   const { todos, updateTodos, deleteTodos } = useContext(TodoContext);
@@ -36,11 +37,13 @@ function Display() {
       {todos.length > 0 ? (
         <ul>
           {todos.map((todo, index) => (
-            <li key={index}>
-              {todo.title}
-              <button onClick={() => handleClick(index)}>Edit</button>
-              <button onClick={() => handleDelete(index)}>Delete</button>
-            </li>
+            <List
+              // key={todo.title}
+              todo={todo}
+              index={index}
+              handleClick={handleClick}
+              handleDelete={handleDelete}
+            />
           ))}
         </ul>
       ) : (
